@@ -5,18 +5,6 @@ using UnityEngine;
 
 public class WoodenGolemController : EnemyController
 {
-
-    void Start()
-    {
-
-    }
-
-    
-    void Update()
-    {
-        LowerCooldown();
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -24,24 +12,8 @@ public class WoodenGolemController : EnemyController
             Player player = collision.gameObject.GetComponent<Player>();
             if (IdleAnimator != null && player != null && currentCooldown <= 0f)
             {
-                IdleAnimator.SetBool("Attacking", true);
-                player.DecreaseHP(enemy.dmg);
-                currentCooldown = maxCooldown;
+                Attack();
             }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        IdleAnimator.SetBool("Attacking", false);
-        IdleAnimator.SetBool("Walk", true);
-    }
-
-    public void LowerCooldown()
-    {
-        if (currentCooldown > 0f)
-        {
-            currentCooldown -= Time.deltaTime;
         }
     }
 }

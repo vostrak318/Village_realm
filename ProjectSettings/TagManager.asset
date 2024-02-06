@@ -9,6 +9,7 @@ TagManager:
   - vampire
   - woodenGolem
   - terrorBird
+  - enemy
   layers:
   - Default
   - TransparentFX
