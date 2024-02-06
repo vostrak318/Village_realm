@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bc7b59a26c92f40a547c5443027cad, type: 3}
+  m_Name: Vampire
+  m_EditorClassIdentifier: 
+  id: 2
+  hp: 80
+  dmg: 20
+  speed: 1.5
+  enemyName: Vampire
+  icon: {fileID: 21300000, guid: 681295655a0216c42bbea28f85cebe83, type: 3}
+  prefab: {fileID: 8036368825984995081, guid: ff0c03b7094ba884cb3e632802499a4a, type: 3}
+  drop: {fileID: 441699328397061122, guid: b10ae49dab0677f41b6d5beb7e128a87, type: 3}

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - tree
   - stone
+  - vampire
+  - woodenGolem
+  - terrorBird
   layers:
   - Default
   - TransparentFX
