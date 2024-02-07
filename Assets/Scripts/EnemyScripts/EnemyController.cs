@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     protected float maxHp;
     protected float dmg;
     protected float speed;
+    protected GameObject drop;
 
     [SerializeField]
     protected Image healthBar;
@@ -28,6 +29,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     protected GameObject parentHolder;
 
+
     private void Start()
     {
         healthCanvas.SetActive(false);
@@ -36,6 +38,7 @@ public class EnemyController : MonoBehaviour
         dmg = enemy.dmg;
         speed = enemy.speed;
         currentCooldown = maxCooldown;
+        drop = enemy.drop;
     }
 
     private void Update()
@@ -57,6 +60,8 @@ public class EnemyController : MonoBehaviour
         if (this.hp <= 0 )
         {
             Destroy(parentHolder);
+            Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y);
+            Instantiate(drop, spawnPosition, Quaternion.identity);
         }
     }
 
