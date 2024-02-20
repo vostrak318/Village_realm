@@ -6,6 +6,7 @@ public class CraftingSystem : MonoBehaviour
 {
     private List<ItemPickup> groundItems = new();
     public List<Recipes> recipes = new();
+    private List<Recipes> craftableRecipes = new();
 
     public void TryCraft()
     {
@@ -22,15 +23,17 @@ public class CraftingSystem : MonoBehaviour
     {
         Vector2 spawnPosition1 = new Vector2(transform.position.x, transform.position.y);
         Instantiate(recipe.craftedItemPrefab, spawnPosition1, Quaternion.identity);
-        Debug.Log("Vytvoøen item: " + recipe.recipeName);
     }
     private void RemoveItems(List<string> itemNames)
     {
         foreach (string itemName in itemNames)
         {
             ItemPickup itemToRemove = groundItems.Find(item => item.Item.itemName == itemName);
-            Destroy(itemToRemove.gameObject);
-            groundItems.Remove(itemToRemove);
+            if (itemToRemove != null)
+            {
+                groundItems.Remove(itemToRemove);
+                Destroy(itemToRemove.gameObject);
+            }
         }
     }
     private bool HasItemsOnGround(List<string> neededItems)
