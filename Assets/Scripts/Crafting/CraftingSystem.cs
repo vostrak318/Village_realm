@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftingSystem : MonoBehaviour
 {
@@ -8,15 +9,25 @@ public class CraftingSystem : MonoBehaviour
     public List<Recipes> recipes = new();
     private List<Recipes> craftableRecipes = new();
 
+    public CraftingManager craftingManager;
+
     public void TryCraft()
     {
+        if (craftableRecipes.Count > 0)
+        {
+            craftingManager.CreateButtons(craftableRecipes);
+        }
+    }
+    private void CheckCraftableRecipes() 
+    {
+        craftableRecipes.Clear();
         foreach (Recipes recipe in recipes)
         {
             if (HasItemsOnGround(recipe.requiredItems))
-                CreateItem(recipe);
+                craftableRecipes.Add(recipe);
         }
     }
-    private void CreateItem(Recipes recipe)
+    public void CreateItem(Recipes recipe)
     {
         Instantiate(recipe.craftedItemPrefab, transform.position, Quaternion.identity);
         RemoveItems(recipe.requiredItems);
@@ -73,7 +84,7 @@ public class CraftingSystem : MonoBehaviour
     void Update()
     {
         CheckRadiusForItems();
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-            TryCraft();
+        CheckCraftableRecipes();
+        TryCraft();
     }
 }

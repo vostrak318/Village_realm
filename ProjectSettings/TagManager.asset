@@ -47,6 +47,9 @@ TagManager:
   - name: BackgroundTextures
     uniqueID: 1949965663
     locked: 0
+  - name: Floor
+    uniqueID: 724140029
+    locked: 0
   - name: PickableItem
     uniqueID: 4047995705
     locked: 0
