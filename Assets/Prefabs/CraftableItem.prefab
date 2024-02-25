@@ -224,6 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftedRecipes: {fileID: 0}
   craftingSystem: {fileID: 0}
+  Icon: {fileID: 8764572403113994870}
+  Name: {fileID: 7650443125517130067}
 --- !u!1 &3773909756332267517
 GameObject:
   m_ObjectHideFlags: 0

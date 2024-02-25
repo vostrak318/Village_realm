@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CraftingManager : MonoBehaviour
 {
@@ -10,20 +7,45 @@ public class CraftingManager : MonoBehaviour
     public GameObject buttonPrefab;
     public CraftingSystem craftingSystem;
 
-    public void CreateButtons(List<Recipes> craftableRecipe) 
+    /// <summary>
+    /// Vytvoøí buttony pro craftable itemy
+    /// </summary>
+    /// <param name="craftableRecipe"> List receptù, které lze vycraftit </param>
+    public void CreateButtons(List<Recipes> craftableRecipes) 
     {
+        // Zapni nabídku, pokud ještì zaplá není
         if (recipesContainer.gameObject.activeInHierarchy == false)
             recipesContainer.gameObject.SetActive(true);
 
-        for (int i = 0; i < recipesContainer.childCount; i++)
+        // Pro kadého potomka - button v containeru
+        for (int i = recipesContainer.childCount - 1; i > -1; i--)
         {
             // Pokud ten recept u nemùeme craftit, sma button
-            if (!craftableRecipe.Contains(recipesContainer.GetChild(0).GetComponent<CraftingButton>().craftedRecipes))
-                Destroy(recipesContainer.GetChild(0).gameObject);
+            if (!craftableRecipes.Contains(recipesContainer.GetChild(i).GetComponent<CraftingButton>().craftedRecipes))
+                Destroy(recipesContainer.GetChild(i).gameObject);
         }
-        foreach (Recipes recipe in craftableRecipe)
-            // Pokud ten recept mùeme craftit, pøidej ho
-            if (recipesContainer.childCount == 0 || !craftableRecipe.Contains(recipesContainer.GetChild(0).GetComponent<CraftingButton>().craftedRecipes))
+
+        // Pro kadı craftable recept
+        foreach (Recipes recipe in craftableRecipes)
+            // Pokud ten recept mùeme craftit nebo ještì ádnı button neexistuje, pøidej ho
+            if (!IsRecipeInstantiated(recipe))
                 Instantiate(buttonPrefab, recipesContainer).GetComponent<CraftingButton>().AssignedRecipe(recipe, craftingSystem);
+    }
+
+    /// <summary>
+    /// Zjišuje, jestli je recept u zobrazen nebo ne
+    /// </summary>
+    /// <param name="recipe"> Recept, kterı se hledá </param>
+    /// <returns> Boolean, zda-li je ji recept zobrazenı nebo ne </returns>
+    bool IsRecipeInstantiated(Recipes recipe)
+    {
+        for (int i = 0; i < recipesContainer.childCount; i++)
+        {
+            // U existuje
+            if (recipesContainer.GetChild(i).GetComponent<CraftingButton>().craftedRecipes == recipe)
+                return true;
+        }
+        // Ještì neexistuje
+        return false;
     }
 }
