@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 534975260824811500}
   - component: {fileID: 3143610309568121552}
   - component: {fileID: 2735403464747152240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: magical_flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

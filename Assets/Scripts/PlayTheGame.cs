@@ -13,15 +13,9 @@ public class PlayTheGame : MonoBehaviour
     {
         menu.SetActive(true);
     }
-
-    void Update()
-    {
-        
-    }
-
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Game");
         Time.timeScale = 1;
     }
     public void QuitGame()

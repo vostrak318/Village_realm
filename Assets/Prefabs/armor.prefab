@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6157136940136577922}
   - component: {fileID: 6103858199013334956}
   - component: {fileID: 9143251563485750319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

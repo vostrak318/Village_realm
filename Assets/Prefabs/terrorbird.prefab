@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8534964664165386772}
   - component: {fileID: 5607266380325536750}
   - component: {fileID: 1135502922913028613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: terrorbird
   m_TagString: terrorBird
   m_Icon: {fileID: 0}
@@ -172,4 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 1f916e1fb118b2e43b49f001cd15410b, type: 2}
-  attackAnim: {fileID: 0}
+  IdleAnimator: {fileID: 0}
+  AttackAnimator: {fileID: 0}
+  hp: 0
+  healthBar: {fileID: 0}
+  healthCanvas: {fileID: 0}
+  parentHolder: {fileID: 0}

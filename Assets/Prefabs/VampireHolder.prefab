@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 717816332214702278}
   - component: {fileID: 8415554741457760525}
   - component: {fileID: 5440052283163134959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015836171967582373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VampireHolder
   m_TagString: vampire
   m_Icon: {fileID: 0}
@@ -148,9 +148,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7015836171967582373}
     m_Modifications:
+    - target: {fileID: 1080963148641367399, guid: b17988a781a0b35419a6a224b824373d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1756709009362030123, guid: b17988a781a0b35419a6a224b824373d, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756709009362030123, guid: b17988a781a0b35419a6a224b824373d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1756709009362030123, guid: b17988a781a0b35419a6a224b824373d, type: 3}
       propertyPath: m_IsActive
@@ -259,6 +267,10 @@ PrefabInstance:
     - target: {fileID: 5527106942373343299, guid: b17988a781a0b35419a6a224b824373d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606398693205673701, guid: b17988a781a0b35419a6a224b824373d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

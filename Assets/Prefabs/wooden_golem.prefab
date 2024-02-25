@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2697887961397110473}
   - component: {fileID: 2396811163869919306}
   - component: {fileID: 8396255043355221554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wooden_golem
   m_TagString: woodenGolem
   m_Icon: {fileID: 0}
@@ -173,7 +173,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 3d863476e3d633140a1a133b14216409, type: 2}
-  attackAnim: {fileID: 8396255043355221554}
+  IdleAnimator: {fileID: 0}
+  AttackAnimator: {fileID: 0}
+  hp: 0
+  healthBar: {fileID: 0}
+  healthCanvas: {fileID: 0}
+  parentHolder: {fileID: 0}
 --- !u!95 &8396255043355221554
 Animator:
   serializedVersion: 5

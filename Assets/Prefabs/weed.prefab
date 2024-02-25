@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7634806104380184338}
   - component: {fileID: -6500404252731995431}
   - component: {fileID: 8177490924897799125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weed
   m_TagString: Untagged
   m_Icon: {fileID: 0}

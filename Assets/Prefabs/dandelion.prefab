@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3261343519154593455}
   - component: {fileID: -6444596663363216829}
   - component: {fileID: 4522227405265461220}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dandelion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 5ad903dde1cd4134bb393566568a402c, type: 2}
-  ItemObject: {fileID: 2110067741339356070}
 --- !u!114 &-6444596663363216829
 MonoBehaviour:
   m_ObjectHideFlags: 0

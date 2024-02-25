@@ -20,7 +20,6 @@ public class CraftingButton : MonoBehaviour
         this.craftingSystem = craftingSystem;
         Icon.sprite = recipe.ItemIcon;
         Name.text = recipe.name;
-
     }
 
     /// <summary>

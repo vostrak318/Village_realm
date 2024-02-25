@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3177975202150335484}
   - component: {fileID: -1322915761046097802}
   - component: {fileID: 7914914012877183995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vampire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,3 +196,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: e3ba5f83bbf376e49a962f42e7131af1, type: 2}
   IdleAnimator: {fileID: 0}
   AttackAnimator: {fileID: 0}
+  hp: 0
+  healthBar: {fileID: 0}
+  healthCanvas: {fileID: 0}
+  parentHolder: {fileID: 0}
