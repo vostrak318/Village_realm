@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\EnemyController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\VampireController.cs" />
+    <Compile Include="Assets\Scripts\SaveAndLoad.cs" />
     <Compile Include="Assets\Scripts\PlayTheGame.cs" />
     <Compile Include="Assets\Scripts\Crafting\CraftingManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
