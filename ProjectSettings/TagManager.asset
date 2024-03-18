@@ -11,6 +11,7 @@ TagManager:
   - terrorBird
   - enemy
   - minimapPlayer
+  - border
   layers:
   - Default
   - TransparentFX

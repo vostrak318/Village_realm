@@ -6,27 +6,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
 
-    private Rigidbody2D body;
     private Vector2 axisMovement;
     public Animator animator;
 
-    void Start()
-    {
-        body = GetComponent<Rigidbody2D>();
-    }
 
     void Update()
     {
         axisMovement.x = Input.GetAxisRaw("Horizontal");
         axisMovement.y = Input.GetAxisRaw("Vertical");
-        if (body.velocity == Vector2.zero)
-        {
-            animator.SetBool("Walk", false);
-        }
-        else
-        {
-            animator.SetBool("Walk", true);
-        }
+        
     }
 
     private void FixedUpdate()
@@ -36,7 +24,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        body.velocity = axisMovement.normalized * speed;
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + axisMovement, speed * Time.deltaTime);
+
+        if (axisMovement.magnitude == 0)
+        {
+            animator.SetBool("Walk", false);
+        }
+        else
+        {
+            animator.SetBool("Walk", true);
+        }
+
         CheckForFlipping();
     }
 
