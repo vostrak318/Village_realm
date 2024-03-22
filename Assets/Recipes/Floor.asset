@@ -19,3 +19,4 @@ MonoBehaviour:
   - Wood
   - Wood
   craftedItemPrefab: {fileID: 6295394769842226575, guid: 84010082503def042b24b631f693384a, type: 3}
+  ItemIcon: {fileID: 21300000, guid: c697c136e7d0e494eb0dd08832542804, type: 3}

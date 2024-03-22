@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\ChoppingTree.cs" />
     <Compile Include="Assets\Scripts\DealDmgToEnemy.cs" />
     <Compile Include="Assets\Scripts\MiningStone.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\DeerController.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\InventoryManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
   </ItemGroup>

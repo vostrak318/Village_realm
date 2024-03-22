@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3f;
+    [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] private float rideSpeed = 6f;
+    private float currentSpeed;
+
+    [SerializeField]
+    float toggleRideCooldown = 1f;
+    float currentToggleRideCooldown = 0;
 
     private Vector2 axisMovement;
     public Animator animator;
 
+    private bool riding = false;
+    [SerializeField]
+    private GameObject rideObject;
 
-    void Update()
+    private void Start()
+    {
+        currentSpeed = walkSpeed;
+    }
+
+    private void Update()
     {
         axisMovement.x = Input.GetAxisRaw("Horizontal");
         axisMovement.y = Input.GetAxisRaw("Vertical");
-        
+        LowerCooldown();
+        if (riding && Input.GetKeyDown(KeyCode.C))
+        {
+            ToggleRide();
+        }
     }
 
     private void FixedUpdate()
@@ -24,33 +42,52 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + axisMovement, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + axisMovement, currentSpeed * Time.deltaTime);
 
-        if (axisMovement.magnitude == 0)
-        {
-            animator.SetBool("Walk", false);
-        }
-        else
-        {
-            animator.SetBool("Walk", true);
-        }
+        animator.SetBool("Walk", axisMovement.magnitude > 0);
+        animator.SetBool("Ride", riding);
 
         CheckForFlipping();
     }
 
     private void CheckForFlipping()
     {
-        bool movingLeft = axisMovement.x < 0;
-        bool movingRight = axisMovement.x > 0;
-
-        if (movingLeft)
+        if (axisMovement.x < 0)
         {
-            transform.localScale = new Vector3(-1f, transform.localScale.y);
+            transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
         }
-
-        if (movingRight)
+        else if (axisMovement.x > 0)
         {
-            transform.localScale = new Vector3(1f, transform.localScale.y);
+            transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    public void ToggleRide()
+    {
+        if (currentToggleRideCooldown <= 0)
+        {
+            if (!riding)
+            {
+                riding = true;
+                currentSpeed = rideSpeed;
+            }
+            else
+            {
+                riding = false;
+                currentSpeed = walkSpeed;
+                animator.SetBool("Ride", riding);
+                Instantiate(rideObject, new Vector2(transform.position.x, transform.position.y), transform.rotation);
+            }
+            currentToggleRideCooldown = toggleRideCooldown;
+        }
+        Debug.Log(riding);
+    }
+
+    void LowerCooldown()
+    {
+        if (currentToggleRideCooldown > 0)
+        {
+            currentToggleRideCooldown -= Time.deltaTime;
         }
     }
 }
