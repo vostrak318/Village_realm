@@ -1,19 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class Inventory
+{
+    public List<Item> Items;
+}
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
-    
+    public Inventory inventory = new Inventory();
+
     public Transform ItemContent;
     public GameObject InventoryItem;
     public GameObject Player;
 
     public Button RemoveItemButton;
+
+    public void SaveInventory()
+    {
+        string json = JsonUtility.ToJson(inventory);
+        PlayerPrefs.SetString("inventory", json);
+        PlayerPrefs.Save();
+    }
 
     private void Awake()
     {
@@ -25,23 +38,15 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Item item, GameObject gameObjectItem)
     {
-        Items.Add(item);
+        inventory.Items.Add(item);
         ListItems();
-
-        string json = JsonUtility.ToJson(Items);
-        PlayerPrefs.SetString("inventory", json);
-        PlayerPrefs.Save();
     }
 
     public void Remove(Item item)
     {
         DropItem(item);
-        Items.Remove(item);
+        inventory.Items.Remove(item);
         ListItems();
-
-        string json = JsonUtility.ToJson(Items);
-        PlayerPrefs.SetString("inventory", json);
-        PlayerPrefs.Save();
     }
 
     public void ListItems()
@@ -49,7 +54,7 @@ public class InventoryManager : MonoBehaviour
         foreach (Transform child in ItemContent)
         Destroy(child.gameObject);
 
-        foreach (var item in Items)
+        foreach (var item in inventory.Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
@@ -72,7 +77,7 @@ public class InventoryManager : MonoBehaviour
         string json = PlayerPrefs.GetString("inventory");
         if (!string.IsNullOrEmpty(json))
         {
-            Items = JsonUtility.FromJson<List<Item>>(json);
+            inventory = JsonUtility.FromJson<Inventory>(json);
             Debug.Log("Done Loading");
         }
     }

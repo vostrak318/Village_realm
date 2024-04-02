@@ -9,7 +9,7 @@ public class ItemPickup : MonoBehaviour
 
     void Pickup()
     {
-        if (InventoryManager.Instance.Items.Count < 12)
+        if (InventoryManager.Instance.inventory.Items.Count < 12)
         {
             InventoryManager.Instance.Add(Item, itemObject);
             Destroy(gameObject);
