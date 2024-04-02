@@ -52907,8 +52907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5ff394ac26d1246be1b628cfe76625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
-  GameObjectsItems: []
+  inventory:
+    Items: []
   ItemContent: {fileID: 1309552203}
   InventoryItem: {fileID: 1703141043913091059, guid: 299adc9b107773d41918b08c833b1e2a, type: 3}
   Player: {fileID: 1357484509}
@@ -66236,7 +66236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afed15fd3ebfda84d9eff6d5ae1b4dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1357484516}
+  TreePrefabs:
+  - ID: 0
+    Prefab: {fileID: 4123691365767629073, guid: 3a1b266dbef9e204d91b4f3ca0ddf9eb, type: 3}
+  - ID: 1
+    Prefab: {fileID: 3454697794829239229, guid: ce366e05a83cce043858b333a01a31c8, type: 3}
 --- !u!1 &1782840081
 GameObject:
   m_ObjectHideFlags: 0

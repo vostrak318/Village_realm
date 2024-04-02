@@ -6,6 +6,10 @@ public class ObjectDrop : MonoBehaviour
 {
     [SerializeField]
     private GameObject drop;
+    [SerializeField]
+    private int prefabId;
+    
+    public int PrefabId { get => prefabId; set => prefabId = value; }
 
     private Vector2 spawnOffset = new Vector2(1,1);
     public void SpawnItem()

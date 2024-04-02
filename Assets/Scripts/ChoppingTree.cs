@@ -10,6 +10,7 @@ public class ChoppingTree : MonoBehaviour
         {
             Destroy(collision.gameObject);
             collision.GetComponent<ObjectDrop>().SpawnItem();
+            SaveAndLoad.Instance.SaveTrees();
         }
     }
 }
