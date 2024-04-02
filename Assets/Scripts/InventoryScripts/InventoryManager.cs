@@ -8,8 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public List<Item> Items = new List<Item>();
-    public List<GameObject> GameObjectsItems = new List<GameObject>();
-
+    
     public Transform ItemContent;
     public GameObject InventoryItem;
     public GameObject Player;
@@ -21,13 +20,17 @@ public class InventoryManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
         RemoveItemButton.onClick.AddListener(() => Remove(InventoryItem.GetComponent<Item>()));
+        LoadInventory();
     }
 
     public void Add(Item item, GameObject gameObjectItem)
     {
         Items.Add(item);
-        GameObjectsItems.Add(gameObjectItem);
         ListItems();
+
+        string json = JsonUtility.ToJson(Items);
+        PlayerPrefs.SetString("inventory", json);
+        PlayerPrefs.Save();
     }
 
     public void Remove(Item item)
@@ -35,6 +38,10 @@ public class InventoryManager : MonoBehaviour
         DropItem(item);
         Items.Remove(item);
         ListItems();
+
+        string json = JsonUtility.ToJson(Items);
+        PlayerPrefs.SetString("inventory", json);
+        PlayerPrefs.Save();
     }
 
     public void ListItems()
@@ -58,5 +65,15 @@ public class InventoryManager : MonoBehaviour
     public void DropItem(Item item)
     {
         Instantiate(item.itemPrefab, Player.transform.position, Quaternion.identity);
+    }
+
+    public void LoadInventory()
+    {
+        string json = PlayerPrefs.GetString("inventory");
+        if (!string.IsNullOrEmpty(json))
+        {
+            Items = JsonUtility.FromJson<List<Item>>(json);
+            Debug.Log("Done Loading");
+        }
     }
 }

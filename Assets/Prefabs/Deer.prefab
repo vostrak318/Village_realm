@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6203667289118164623}
   - component: {fileID: 3796125662771254772}
   - component: {fileID: 2058912583951657525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Deer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthCanvas: {fileID: 0}
   parentHolder: {fileID: 0}
-  rider: {fileID: 0}
 --- !u!61 &6203667289118164623
 BoxCollider2D:
   m_ObjectHideFlags: 0

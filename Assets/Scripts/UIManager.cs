@@ -47,8 +47,12 @@ public class UIManager : MonoBehaviour
     }
     public void QuitGame()
     {
+        SaveAndLoad.Instance.SavePlayer();
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
+        {
+            Destroy(enemy);
+        }
         SceneManager.LoadScene("MenuScene");
-        Debug.Log("Back to menu!");
     }
     public void Resume()
     {

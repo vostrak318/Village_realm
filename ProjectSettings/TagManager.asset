@@ -58,9 +58,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Trees
-    uniqueID: 635376273
-    locked: 0
   - name: UI
     uniqueID: 519605227
     locked: 0

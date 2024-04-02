@@ -936,6 +936,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.PlayerPrefsEditor.Editor.csproj">
+      <Project>{6D8E8EF4-2292-47D3-6CF4-F94217C8A4FD}</Project>
+      <Name>Unity.PlayerPrefsEditor.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PlayerPrefsEditor.Samples.SampleScene.csproj">
+      <Project>{D9601519-C059-C242-753C-1B0129FD60E4}</Project>
+      <Name>Unity.PlayerPrefsEditor.Samples.SampleScene</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PlayerPrefsEditor.EditorResources.csproj">
+      <Project>{CEB56396-A139-B32F-A08F-D734BC7556F7}</Project>
+      <Name>Unity.PlayerPrefsEditor.EditorResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
