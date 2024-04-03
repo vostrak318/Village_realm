@@ -61,6 +61,7 @@ public class SaveAndLoad : MonoBehaviour
         player.setAge();
         player.setPosition();
     }
+
     public void SaveTrees()
     {
         GameObject[] trees = GameObject.FindGameObjectsWithTag("tree");

@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     public void setHP()
     {
         hp = PlayerPrefs.GetFloat("HP");
+        image.fillAmount = hp / maxHp;
     }
     public void setAge()
     {
