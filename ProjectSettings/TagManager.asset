@@ -12,6 +12,7 @@ TagManager:
   - enemy
   - minimapPlayer
   - border
+  - pickableItem
   layers:
   - Default
   - TransparentFX
