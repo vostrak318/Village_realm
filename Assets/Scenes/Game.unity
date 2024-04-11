@@ -60944,7 +60944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1664672061
 Transform:
   m_ObjectHideFlags: 0
@@ -66371,7 +66371,9 @@ MonoBehaviour:
     Prefab: {fileID: 4123691365767629073, guid: 3a1b266dbef9e204d91b4f3ca0ddf9eb, type: 3}
   - ID: 1
     Prefab: {fileID: 3454697794829239229, guid: ce366e05a83cce043858b333a01a31c8, type: 3}
-  StonePrefabs: []
+  StonePrefabs:
+  - ID: 0
+    Prefab: {fileID: 6712467259560572145, guid: 6ad8ceb3a4d7cf34f991f4d48b6322d8, type: 3}
   AllItemPrefabs:
   - {fileID: 11400000, guid: d3a8e39bc1061f44ca63cadd37716218, type: 2}
   - {fileID: 11400000, guid: 6d7ff8dfeb5eebd408e8637e591202a6, type: 2}

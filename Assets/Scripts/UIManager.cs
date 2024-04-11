@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
         }
         InventoryManager.Instance.SaveInventory();
         SaveAndLoad.Instance.SaveItemsOnGround();
-        //SaveAndLoad.Instance.SaveTreesAndStones();
+        SaveAndLoad.Instance.SaveTreesAndStones();
         SceneManager.LoadScene("MenuScene");
     }
     public void Resume()
