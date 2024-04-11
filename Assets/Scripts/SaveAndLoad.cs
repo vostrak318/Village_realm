@@ -8,6 +8,8 @@ public class SaveAndLoad : MonoBehaviour
     private static SaveAndLoad instance;
     public static SaveAndLoad Instance { get { return instance; }}
 
+    [field: SerializeField] private Transform EnvironmentParent;
+
     [System.Serializable]
     public class TreePrefabEntry
     {
@@ -133,7 +135,7 @@ public class SaveAndLoad : MonoBehaviour
             GameObject treePrefab = TreePrefabs.Find(entry => entry.ID == prefabId).Prefab;
             if (treePrefab != null)
             {
-                GameObject tree = Instantiate(treePrefab, treePosition, Quaternion.identity);
+                GameObject tree = Instantiate(treePrefab, treePosition, Quaternion.identity, EnvironmentParent);
 
                 bool isDestroyed = PlayerPrefs.GetInt("TreeDestroyed" + i) == 1;
                 if (isDestroyed)
@@ -155,9 +157,9 @@ public class SaveAndLoad : MonoBehaviour
             StonePrefabEntry stonePrefab = StonePrefabs.Find(entry => entry.ID == prefabId);
             if (stonePrefab != null)
             {
-                GameObject stone = Instantiate(stonePrefab.Prefab, stonePosition, Quaternion.identity);
-                bool isDestroyed = PlayerPrefs.GetInt("StoneDestroyed" + i) == 1;
+                GameObject stone = Instantiate(stonePrefab.Prefab, stonePosition, Quaternion.identity, EnvironmentParent);
 
+                bool isDestroyed = PlayerPrefs.GetInt("StoneDestroyed" + i) == 1;
                 if (isDestroyed)
                     Destroy(stone);
             }   
