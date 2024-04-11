@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,6 +27,8 @@ public class SaveAndLoad : MonoBehaviour
 
     public List<StonePrefabEntry> StonePrefabs;
 
+    public List<Item> AllItemPrefabs;
+
     Player player;
 
     private void Awake()
@@ -49,7 +50,7 @@ public class SaveAndLoad : MonoBehaviour
             DestroyAllTreesAndStones();
             LoadTreesAndStones();
         }
-        if (PlayerPrefs.GetInt("ItemsCount") > 0)
+        if (PlayerPrefs.GetInt("ItemsOnGroundCount") > 0)
         {
             DestroyAllItemsOnGround();
             LoadItemsOnGround();
@@ -128,7 +129,6 @@ public class SaveAndLoad : MonoBehaviour
         }
 
 
-
         int stonesCount = PlayerPrefs.GetInt("StonesCount");
         for (int i = 0; i < stonesCount; i++)
         {
@@ -137,13 +137,15 @@ public class SaveAndLoad : MonoBehaviour
             float z = PlayerPrefs.GetFloat("StoneZ" + i);
             Vector3 stonePosition = new Vector3(x, y, z);
             int prefabId = PlayerPrefs.GetInt("StonePrefabId" + i);
-            GameObject stonePrefab = StonePrefabs.Find(entry => entry.ID == prefabId).Prefab;
-            GameObject stone = Instantiate(stonePrefab, stonePosition, Quaternion.identity);
-            bool isDestroyed = PlayerPrefs.GetInt("StoneDestroyed" + i) == 1;
-            if (isDestroyed)
+            StonePrefabEntry stonePrefab = StonePrefabs.Find(entry => entry.ID == prefabId);
+            if (stonePrefab != null)
             {
-                Destroy(stone);
-            }
+                GameObject stone = Instantiate(stonePrefab.Prefab, stonePosition, Quaternion.identity);
+                bool isDestroyed = PlayerPrefs.GetInt("StoneDestroyed" + i) == 1;
+
+                if (isDestroyed)
+                    Destroy(stone);
+            }   
         }
     }
     public void DestroyAllTreesAndStones()
@@ -164,11 +166,17 @@ public class SaveAndLoad : MonoBehaviour
     public void SaveItemsOnGround()
     {
         ItemPickup[] items = GameObject.FindObjectsOfType<ItemPickup>();
-        PlayerPrefs.SetInt("ItemsCount", items.Length);
+        PlayerPrefs.SetInt("ItemsOnGroundCount", items.Length);
+
+        foreach (ItemPickup item in items)
+            Debug.Log(item.name);
+        int i = 0;
         foreach (ItemPickup _pickUpableItem in items)
         {
-            PlayerPrefs.SetFloat("ItemX" + _pickUpableItem.name, _pickUpableItem.transform.position.x);
-            PlayerPrefs.SetFloat("ItemY" + _pickUpableItem.name, _pickUpableItem.transform.position.y);
+            PlayerPrefs.SetFloat("ItemX" + i, _pickUpableItem.transform.position.x);
+            PlayerPrefs.SetFloat("ItemY" + i, _pickUpableItem.transform.position.y);
+            PlayerPrefs.SetInt("ItemID" + i, _pickUpableItem.Item.id);
+            i++;
         }   
         Debug.Log("Items saved");
         PlayerPrefs.Save();
@@ -176,20 +184,25 @@ public class SaveAndLoad : MonoBehaviour
 
     public void LoadItemsOnGround()
     {
-        int itemsCount = PlayerPrefs.GetInt("ItemsCount");
+        int itemsCount = PlayerPrefs.GetInt("ItemsOnGroundCount");
         for (int i = 0; i < itemsCount; i++)
         {
             float x = PlayerPrefs.GetFloat("ItemX" + i);
             float y = PlayerPrefs.GetFloat("ItemY" + i);
-            float z = PlayerPrefs.GetFloat("ItemZ" + i);
-            Vector3 itemPosition = new Vector3(x, y, z);
-            int prefabId = PlayerPrefs.GetInt("ItemPrefabId" + i);
-            GameObject itemPrefab = TreePrefabs.Find(entry => entry.ID == prefabId).Prefab;
-            GameObject item = Instantiate(itemPrefab, itemPosition, Quaternion.identity);
-            bool isDestroyed = PlayerPrefs.GetInt("ItemDestroyed" + i) == 1;
-            if (isDestroyed)
+            Vector3 itemPosition = new Vector3(x, y);
+
+            int _spawnedItemID = PlayerPrefs.GetInt("ItemID" + i);
+
+            Item _itemPrefab = AllItemPrefabs.Find(entry => entry.id == _spawnedItemID);
+
+            if (_itemPrefab != null)
             {
-                Destroy(item);
+                GameObject item = Instantiate(_itemPrefab.itemPrefab, itemPosition, Quaternion.identity);
+
+                bool isDestroyed = PlayerPrefs.GetInt("ItemDestroyed" + i) == 1;
+
+                if (isDestroyed)
+                    Destroy(item);
             }
         }
     }

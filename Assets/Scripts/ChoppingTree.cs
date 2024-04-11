@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChoppingTree : MonoBehaviour
@@ -10,7 +8,7 @@ public class ChoppingTree : MonoBehaviour
         {
             Destroy(collision.gameObject);
             collision.GetComponent<ObjectDrop>().SpawnItem();
-            SaveAndLoad.Instance.SaveTrees();
+            SaveAndLoad.Instance.SaveTreesAndStones();
         }
     }
 }
