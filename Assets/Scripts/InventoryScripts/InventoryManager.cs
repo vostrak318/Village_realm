@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
 
     public Button RemoveItemButton;
 
+    
     public void SaveInventory()
     {
         string json = JsonUtility.ToJson(inventory);
@@ -62,6 +63,7 @@ public class InventoryManager : MonoBehaviour
             var removeButton = obj.transform.Find("RemoveItem").GetComponent<Button>();
 
             removeButton.onClick.AddListener(() => Remove(item));
+            obj.GetComponent<Button>().onClick.AddListener(() => Build(item));
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
@@ -79,6 +81,18 @@ public class InventoryManager : MonoBehaviour
         {
             inventory = JsonUtility.FromJson<Inventory>(json);
             Debug.Log("Done Loading");
+        }
+    }
+
+    public void Build(Item item)
+    {
+        Debug.Log(item.name);
+        if (item.isBuilding)
+        {
+            BuildingManager.Instance.ChangeBuildingMode();
+            BuildingManager.Instance.SetBuilding(item.itemPrefab);
+            Remove(item);
+            UIManager.Instance.CloseInventory();
         }
     }
 }

@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using System;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public sealed class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     [SerializeField]
     GameObject menu;
     [SerializeField]
@@ -19,6 +20,11 @@ public class UIManager : MonoBehaviour
         menu.SetActive(false);
         inventory.SetActive(false);
         minimapPlayer.SetActive(false);
+    }
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
     }
 
     void Update()
@@ -37,12 +43,11 @@ public class UIManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E) && inventory.activeInHierarchy == false && menu.activeInHierarchy == false)
         {
-            inventory.SetActive(true);
-            InventoryManager.Instance.ListItems();
+            OpenInventory();
         }
         else if(Input.GetKeyDown(KeyCode.E) && inventory.activeInHierarchy == true || Input.GetKeyDown(KeyCode.Escape) && inventory.activeInHierarchy == true)
         {
-            inventory.SetActive(false);
+            CloseInventory();
         }
     }
     public void QuitGame()
@@ -62,5 +67,13 @@ public class UIManager : MonoBehaviour
         menu.SetActive(false);
         minimapPlayer.SetActive(false);
         Time.timeScale = 1;
+    }
+    public void CloseInventory() {        
+        inventory.SetActive(false);
+    }
+    public void OpenInventory()
+    {
+        inventory.SetActive(true);
+        InventoryManager.Instance.ListItems();
     }
 }
