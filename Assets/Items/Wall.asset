@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a1856c550d51e34e86ea93ed1bc96de, type: 3}
-  m_Name: Floor
+  m_Name: Wall
   m_EditorClassIdentifier: 
-  id: 13
-  itemName: Floor
-  icon: {fileID: 21300000, guid: c697c136e7d0e494eb0dd08832542804, type: 3}
-  itemPrefab: {fileID: 6295394769842226575, guid: 84010082503def042b24b631f693384a, type: 3}
+  id: 15
+  itemName: Wall
+  icon: {fileID: 21300000, guid: 2626a8fdb183f4f4d8f75c5f7a522898, type: 3}
+  itemPrefab: {fileID: 3059312356613554337, guid: 196e15bb2ccde5047b7026a020738e0c, type: 3}
   isBuilding: 1
