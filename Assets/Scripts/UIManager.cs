@@ -14,12 +14,16 @@ public sealed class UIManager : MonoBehaviour
     GameObject inventory;
     [SerializeField]
     GameObject minimapPlayer;
+    [SerializeField]
+    GameObject deathScreen;
 
     void Start()
     {
+        Time.timeScale = 1;
         menu.SetActive(false);
         inventory.SetActive(false);
         minimapPlayer.SetActive(false);
+        deathScreen.SetActive(false);
     }
     private void Awake()
     {

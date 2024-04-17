@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Stone_Sword_Recipe
   m_EditorClassIdentifier: 
   recipeName: Stone Sword
+  requiredAge: 20
   requiredItems:
   - Wood
   - Wood

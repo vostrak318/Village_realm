@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Floor_Recipe
   m_EditorClassIdentifier: 
   recipeName: Floor
+  requiredAge: 20
   requiredItems:
   - Wood
   - Wood

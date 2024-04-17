@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    System.Random rnd = new System.Random();
     [SerializeField]
     private float maxHp = 100;
     [SerializeField]
@@ -19,11 +21,14 @@ public class Player : MonoBehaviour
     private float age = 20f;
     public float currentAge { get { return age; } private set { age = age; } }
     [SerializeField]
-    private float ageCooldown = 1f;
+    private float ageCooldown = 720f; // 4 minuty na den, 3 dny na rok, cca 50 let
     private float currentCooldown;
 
     [SerializeField]
-    private Image image;
+    private Image hpBar;
+
+    [SerializeField]
+    private GameObject deathScreen;
 
 
     public float Speed { get { return speed; }}
@@ -31,25 +36,44 @@ public class Player : MonoBehaviour
     void Update()
     {
         AddAge();
+        CheckAge();
     }
 
     void AddAge()
     {
-        if (currentCooldown > 0f)
-        {
-            currentCooldown -= Time.deltaTime;
-        }
-        else if (currentCooldown <= 0f)
+        currentCooldown += Time.deltaTime;
+        if (currentCooldown >= ageCooldown)
         {
             age++;
-            currentCooldown = ageCooldown;
+            currentCooldown = 0;
         }
+    }
+    void CheckAge() 
+    { 
+        if (age >= rnd.Next(65, 80)) //nebo pokud nemas potion
+        { 
+            hp = 0; 
+            Time.timeScale = 0;
+            deathScreen.SetActive(true);
+            //game over
+        } 
+    }
+
+    public void RestartAndQuitToMenu()
+    {
+        PlayerPrefs.DeleteAll();
+        UIManager.Instance.QuitGame();
     }
 
     public void DecreaseHP(float enemyDmg)
     {
         hp -= enemyDmg;
-        image.fillAmount = hp / maxHp;
+        hpBar.fillAmount = hp / maxHp;
+        if (hp <= 0)
+        {
+            deathScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public float DealDamage()
@@ -62,7 +86,7 @@ public class Player : MonoBehaviour
     public void setHP()
     {
         hp = PlayerPrefs.GetFloat("HP");
-        image.fillAmount = hp / maxHp;
+        hpBar.fillAmount = hp / maxHp;
     }
     public void setAge()
     {
