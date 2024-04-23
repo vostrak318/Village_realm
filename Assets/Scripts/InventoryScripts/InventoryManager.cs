@@ -89,9 +89,9 @@ public class InventoryManager : MonoBehaviour
         Debug.Log(item.name);
         if (item.isBuilding)
         {
-            BuildingManager.Instance.ChangeBuildingMode();
+            BuildingManager.Instance.ChangeBuildingMode(true);
             BuildingManager.Instance.SetBuilding(item.itemPrefab);
-            Remove(item);
+            //Remove(item);
             UIManager.Instance.CloseInventory();
         }
     }

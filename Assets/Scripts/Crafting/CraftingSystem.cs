@@ -100,6 +100,10 @@ public class CraftingSystem : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        player = GameManager.instance.player;
+    }
     void Update()
     {
         CheckAge();

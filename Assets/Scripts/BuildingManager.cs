@@ -7,8 +7,8 @@ public sealed class BuildingManager : MonoBehaviour
     private static BuildingManager instance;
     public static BuildingManager Instance { get { return instance; } }
     [SerializeField]
-    private GameObject buidling;
-    public GameObject Buidling { get { return buidling; } }
+    private GameObject building;
+    public GameObject Building { get { return building; } }
     private bool isBuildingMode = false;
     public bool IsBuildingMode { get { return isBuildingMode; } }
 
@@ -24,10 +24,14 @@ public sealed class BuildingManager : MonoBehaviour
     }
     public void SetBuilding(GameObject building)
     {
-        this.buidling = building;
+        this.building = building;
     }
     public void ChangeBuildingMode()
     {
         isBuildingMode = !isBuildingMode;
+    }
+    public void ChangeBuildingMode(bool build)
+    {
+        isBuildingMode = build;
     }
 }

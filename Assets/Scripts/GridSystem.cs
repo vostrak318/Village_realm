@@ -7,15 +7,19 @@ using UnityEngine.UIElements;
 
 public class GridSystem : MonoBehaviour
 {
+    [SerializeField]
     private int width;
+    [SerializeField]
     private int height;
+    [SerializeField]
     private float tileSize;
+    [SerializeField]
     private Transform parentPosition;
     private int[,] gridArray;
 
     private List<TileData> tileDataList = new List<TileData>();
 
-    public GridSystem(int width, int height, float tileSize, Transform parentPosition)
+    public GridSystem(/*int width, int height, float tileSize, Transform parentPosition*/)
     {
         this.width = width;
         this.height = height;
@@ -42,15 +46,13 @@ public class GridSystem : MonoBehaviour
             }
         }
     }
-    public void HandleClick(Vector3 clickPosition, GameObject buildingPrefab)
+    public void HandleClick(Vector3 gridPosition, GameObject buildingPrefab)
     {
         TileData tmp;
         
-        Vector3 gridPosition = GetGridPositionFromWorldPosition(clickPosition);
         tmp = tileDataList.Find(tile => tile.x == gridPosition.x && tile.y == gridPosition.y);
         if (gridPosition != null)
         {
-            tmp = tileDataList.Find(tile => tile.x == gridPosition.x && tile.y == gridPosition.y);
             if (!tmp.isOccupied)
             {
                 Instantiate(buildingPrefab, gridPosition, Quaternion.identity);
@@ -64,8 +66,9 @@ public class GridSystem : MonoBehaviour
         {
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 gridPosition = GetGridPositionFromWorldPosition(clickPosition);
+            Debug.Log(BuildingManager.Instance.Building == null);
 
-            HandleClick(clickPosition, BuildingManager.Instance.Buidling);
+            HandleClick(gridPosition, BuildingManager.Instance.Building);
         }
     }
     private Vector3 GetGridPositionFromWorldPosition(Vector3 worldPosition)
@@ -74,5 +77,4 @@ public class GridSystem : MonoBehaviour
         int y = Mathf.FloorToInt((worldPosition.y - parentPosition.position.y) / tileSize);
         return parentPosition.position + new Vector3(x * tileSize, y * tileSize, 0);
     }
-
 }
