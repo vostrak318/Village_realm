@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TileData : MonoBehaviour
@@ -8,7 +6,7 @@ public class TileData : MonoBehaviour
     public int y;
     public bool isOccupied;
 
-    public TileData(int x, int y, bool isOccupied)
+    public void Init(int x, int y, bool isOccupied)
     {
         this.x = x;
         this.y = y;

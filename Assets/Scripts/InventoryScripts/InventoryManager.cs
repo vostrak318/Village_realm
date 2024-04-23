@@ -65,8 +65,13 @@ public class InventoryManager : MonoBehaviour
             removeButton.onClick.AddListener(() => Remove(item));
             obj.GetComponent<Button>().onClick.AddListener(() => Build(item));
 
-            itemName.text = item.itemName;
-            itemIcon.sprite = item.icon;
+            if (itemName != null && itemIcon != null && removeButton != null)
+            {
+                itemName.text = item.itemName;
+                itemIcon.sprite = item.icon;
+            }
+            else
+                Debug.LogError("Mrdko, nìco ti chybí!");
         }
     }
     public void DropItem(Item item)
@@ -86,7 +91,6 @@ public class InventoryManager : MonoBehaviour
 
     public void Build(Item item)
     {
-        Debug.Log(item.name);
         if (item.isBuilding)
         {
             BuildingManager.Instance.ChangeBuildingMode(true);
