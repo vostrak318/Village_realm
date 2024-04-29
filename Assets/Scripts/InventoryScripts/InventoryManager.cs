@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,7 +72,7 @@ public class InventoryManager : MonoBehaviour
                 itemIcon.sprite = item.icon;
             }
             else
-                Debug.LogError("Mrdko, nìco ti chybí!");
+                Debug.LogError("Nìco ti chybí!");
         }
     }
     public void DropItem(Item item)
@@ -95,7 +96,8 @@ public class InventoryManager : MonoBehaviour
         {
             BuildingManager.Instance.ChangeBuildingMode(true);
             BuildingManager.Instance.SetBuilding(item.itemPrefab);
-            //Remove(item);
+
+            inventory.Items.Remove(item);
             UIManager.Instance.CloseInventory();
         }
     }

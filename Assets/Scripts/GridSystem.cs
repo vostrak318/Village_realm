@@ -74,6 +74,8 @@ public class GridSystem : MonoBehaviour
             Vector3 gridPosition = GetGridPositionFromWorldPosition(clickPosition);
 
             this.HandleClick(gridPosition, BuildingManager.Instance.Building);
+            BuildingManager.Instance.ChangeBuildingMode(false);
+
         }
     }
 
