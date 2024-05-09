@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ public class ItemPickup : MonoBehaviour
     public GameObject itemObject;
     public Image loadingWheel;
     float holdTime = 0;
-    public float maxHoldTime = 0.7f;
+    public float maxHoldTime = 2;
 
     void Pickup()
     {
@@ -35,7 +36,7 @@ public class ItemPickup : MonoBehaviour
             Pickup();
         }
     }
-    private void OnMouseDrag()
+    private void OnMouseOver()
     {
         if (Input.GetMouseButton(0))
         {
