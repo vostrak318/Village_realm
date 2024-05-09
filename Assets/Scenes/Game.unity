@@ -81551,8 +81551,56 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2822371454605997597, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
-      propertyPath: m_SortingOrder
+    - target: {fileID: 31325007165144482, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005990284365902442, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 1005990284365902442, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.009252909
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.009252909
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.009252909
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960273906026548727, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6994776411638918309, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
@@ -81598,10 +81646,6 @@ PrefabInstance:
     - target: {fileID: 7452446896791012526, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
       propertyPath: m_Name
       value: weed
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452446896791012526, guid: 66d7c39df28b5644b80f7406b87bfa51, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,7 +8,8 @@ public class ItemPickup : MonoBehaviour
     public Item Item;
     public GameObject itemObject;
     public Image loadingWheel;
-    private bool isHoldingClick = false;
+    float holdTime = 0;
+    public float maxHoldTime = 0.7f;
 
     void Pickup()
     {
@@ -22,33 +23,30 @@ public class ItemPickup : MonoBehaviour
             Debug.Log("plnej inv");
         }
     }
-    private void Update()
+    private void ShowLoadingWheel()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            isHoldingClick = true;
-            StartCoroutine(ShowLoadingWheel());
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            isHoldingClick = false;
-            loadingWheel.fillAmount = 0;
-        }
-    }
-    private IEnumerator ShowLoadingWheel()
-    {
-        float holdTime = 0;
+        holdTime += Time.deltaTime;
 
-        while (isHoldingClick && holdTime < 1.5f)
-        {
-            holdTime += Time.deltaTime;
-            loadingWheel.fillAmount = holdTime / 1.5f;
-            yield return null;
-        }
+        if (loadingWheel != null)
+            loadingWheel.fillAmount = holdTime / maxHoldTime;
 
-        if (holdTime >= 1.5f)
+        if (holdTime >= maxHoldTime)
         {
             Pickup();
+        }
+    }
+    private void OnMouseDrag()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            ShowLoadingWheel();
+        }
+        else
+        {
+            holdTime = 0;
+
+            if (loadingWheel != null)
+                loadingWheel.fillAmount = 0;
         }
     }
 }
