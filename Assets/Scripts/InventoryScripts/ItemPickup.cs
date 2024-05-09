@@ -10,7 +10,7 @@ public class ItemPickup : MonoBehaviour
     public GameObject itemObject;
     public Image loadingWheel;
     float holdTime = 0;
-    public float maxHoldTime = 2;
+    public float maxHoldTime = 0.7f;
 
     void Pickup()
     {
@@ -49,5 +49,12 @@ public class ItemPickup : MonoBehaviour
             if (loadingWheel != null)
                 loadingWheel.fillAmount = 0;
         }
+    }
+    private void OnMouseExit()
+    {
+        holdTime = 0;
+
+        if (loadingWheel != null)
+            loadingWheel.fillAmount = 0;
     }
 }

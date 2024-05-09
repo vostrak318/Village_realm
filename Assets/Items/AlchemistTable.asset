@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1856c550d51e34e86ea93ed1bc96de, type: 3}
+  m_Name: AlchemistTable
+  m_EditorClassIdentifier: 
+  id: 16
+  itemName: Alchemist Table
+  icon: {fileID: 21300000, guid: 8f1b8713f35db3341a05f041b5a111ac, type: 3}
+  itemPrefab: {fileID: 861203992217354068, guid: 8ca58905daf842540bbf22b3b3580bb8, type: 3}
+  isBuilding: 1

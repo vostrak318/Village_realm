@@ -41,6 +41,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4457210703533079534}
     m_Modifications:
+    - target: {fileID: 74402069870152767, guid: 539c716db9d84c04ba84a4acc0059e36, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 74402069870152767, guid: 539c716db9d84c04ba84a4acc0059e36, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2396811163869919306, guid: 539c716db9d84c04ba84a4acc0059e36, type: 3}
       propertyPath: animator
       value: 
