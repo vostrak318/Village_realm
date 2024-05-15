@@ -7,6 +7,18 @@ public class CraftingManager : MonoBehaviour
     public GameObject buttonPrefab;
     public CraftingSystem craftingSystem;
 
+    private static CraftingManager instance;
+    public static CraftingManager Instance;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        Instance = instance;
+    }
+
     public void CreateButtons(List<Recipes> craftableRecipes) 
     {
         if (recipesContainer.gameObject.activeInHierarchy == false)

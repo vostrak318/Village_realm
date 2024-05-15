@@ -15,4 +15,5 @@ MonoBehaviour:
   id: 9
   itemName: Health Potion
   icon: {fileID: 21300000, guid: 3119f41ebcd350a4eb89a08e35c22cf4, type: 3}
-  itemPrefab: {fileID: 7537341176590563199, guid: 48fc1e88debecc34486115fdad92a80c, type: 3}
+  itemPrefab: {fileID: 3240769182658519271, guid: a355f7a3354022b45a585da234d744c3, type: 3}
+  isBuilding: 0

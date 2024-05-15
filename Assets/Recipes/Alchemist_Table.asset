@@ -23,5 +23,5 @@ MonoBehaviour:
   - Magical Flower
   - Shrooms
   - Weed
-  craftedItemPrefab: {fileID: 861203992217354068, guid: 8ca58905daf842540bbf22b3b3580bb8, type: 3}
+  craftedItemPrefab: {fileID: 7071316863936407775, guid: 639233ed3a6a2bd488c58f1dc0288cfe, type: 3}
   ItemIcon: {fileID: 21300000, guid: 8f1b8713f35db3341a05f041b5a111ac, type: 3}

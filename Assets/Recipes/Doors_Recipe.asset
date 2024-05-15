@@ -19,5 +19,5 @@ MonoBehaviour:
   - Wood
   - Wood
   - Stone
-  craftedItemPrefab: {fileID: 4873697559295741192, guid: 659c7f1af61743f4aa8996e45b43564e, type: 3}
+  craftedItemPrefab: {fileID: 4195167998928158074, guid: 51e7663cfabd75d41a18fa83acf4602f, type: 3}
   ItemIcon: {fileID: 21300000, guid: 614899677cec618439b43b75c520e87c, type: 3}

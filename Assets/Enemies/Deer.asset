@@ -19,4 +19,4 @@ MonoBehaviour:
   enemyName: Deer
   icon: {fileID: 21300000, guid: 1502bbf167fe7ad42a04099d70e5e766, type: 3}
   prefab: {fileID: 5418178885364061000, guid: b1841bccc3ba0e747986f163b6fbea56, type: 3}
-  drop: {fileID: 3653353842680438248, guid: fccbb92709de9db49b844c1acd103ca4, type: 3}
+  drop: {fileID: 1911912486642252111, guid: f2cfb6d38f397434ba574a1f4e9d9223, type: 3}

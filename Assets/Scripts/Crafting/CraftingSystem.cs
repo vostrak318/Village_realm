@@ -11,11 +11,9 @@ public class CraftingSystem : MonoBehaviour
     private List<Recipes> craftableRecipes = new();
     Player player;
 
-    public CraftingManager craftingManager;
-
     public void TryCraft()
     {
-        craftingManager.CreateButtons(craftableRecipes);
+        CraftingManager.Instance.CreateButtons(craftableRecipes);
     }
 
     private void CheckCraftableRecipes() 
@@ -88,6 +86,25 @@ public class CraftingSystem : MonoBehaviour
         return items;
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "AlchemistTable")
+        {
+            CheckIfPotion();
+        }
+    }
+
+    void CheckIfPotion()
+    {
+        CheckCraftableRecipes();
+        foreach (Recipes recipe in recipes)
+        {
+            if (recipe.recipeName.Contains("Potion") && !recipes.Contains(recipe))
+            {
+                recipes.Add(recipe);
+            }
+        }
+    }
     void CheckAge()
     {
         unlockedRecipes.Clear();

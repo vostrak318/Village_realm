@@ -19,4 +19,4 @@ MonoBehaviour:
   enemyName: Wooden Golem
   icon: {fileID: 21300000, guid: d59198066144de649bb6c3263e4ddc32, type: 3}
   prefab: {fileID: 8051864108552658481, guid: e3217d81ceef0e648882e5a4f3522c45, type: 3}
-  drop: {fileID: 7939980526019475261, guid: 1e32b20e06cb97d488d255d8da2a996f, type: 3}
+  drop: {fileID: 7256792006459435026, guid: 8684e418ad484eb44bcc0a20c35af6a0, type: 3}

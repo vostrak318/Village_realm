@@ -15,4 +15,5 @@ MonoBehaviour:
   id: 7
   itemName: Cooked Steak
   icon: {fileID: 21300000, guid: 45fd2177b98f01e4da8185d2f49a1a00, type: 3}
-  itemPrefab: {fileID: 2438708486016189642, guid: 137469d6a75824641a3cc5ab157a99a8, type: 3}
+  itemPrefab: {fileID: 4758415839512724459, guid: 5363c465ceee8b34f8fb3e3c2bef775b, type: 3}
+  isBuilding: 0

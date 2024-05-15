@@ -19,4 +19,4 @@ MonoBehaviour:
   enemyName: Vampire
   icon: {fileID: 21300000, guid: 681295655a0216c42bbea28f85cebe83, type: 3}
   prefab: {fileID: 8036368825984995081, guid: ff0c03b7094ba884cb3e632802499a4a, type: 3}
-  drop: {fileID: 441699328397061122, guid: b10ae49dab0677f41b6d5beb7e128a87, type: 3}
+  drop: {fileID: 4700814120146160729, guid: 6bfaa60f9a6499c4384a6b6b77cc2266, type: 3}

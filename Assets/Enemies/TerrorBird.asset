@@ -19,4 +19,4 @@ MonoBehaviour:
   enemyName: Terror Bird
   icon: {fileID: 21300000, guid: 52ca92b0dfd435a478bc478dc8c5a69e, type: 3}
   prefab: {fileID: 8858921243534945969, guid: 10932d73e8414174a90f1ce8bd0d4398, type: 3}
-  drop: {fileID: 3653353842680438248, guid: fccbb92709de9db49b844c1acd103ca4, type: 3}
+  drop: {fileID: 1911912486642252111, guid: f2cfb6d38f397434ba574a1f4e9d9223, type: 3}

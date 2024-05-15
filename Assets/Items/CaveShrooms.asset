@@ -15,4 +15,5 @@ MonoBehaviour:
   id: 8
   itemName: Cave Shrooms
   icon: {fileID: 21300000, guid: 6b339f2f91a04364789226a710d2501a, type: 3}
-  itemPrefab: {fileID: 4985635866605608678, guid: df2a6cf3296d0d949b89596c078764fe, type: 3}
+  itemPrefab: {fileID: 7043295193408652837, guid: 72ab9cac4cbfbdc4fbdedb2d49f1387c, type: 3}
+  isBuilding: 0
