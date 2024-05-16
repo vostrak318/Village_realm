@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +13,7 @@ public class CraftingSystem : MonoBehaviour
     private List<Recipes> craftableRecipes = new();
     Player player;
 
+    private bool inRangeOfAlchemistTable = false;
     public void TryCraft()
     {
         CraftingManager.Instance.CreateButtons(craftableRecipes);
@@ -24,6 +27,8 @@ public class CraftingSystem : MonoBehaviour
         {
             if (HasItemsOnGround(recipe.requiredItems))
                 craftableRecipes.Add(recipe);
+            if (inRangeOfAlchemistTable)
+                CheckIfPotion();
         }
     }
 
@@ -89,20 +94,20 @@ public class CraftingSystem : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name == "AlchemistTable")
-        {
-            CheckIfPotion();
-        }
+            inRangeOfAlchemistTable = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "AlchemistTable")
+            inRangeOfAlchemistTable = false;
     }
 
     void CheckIfPotion()
     {
-        CheckCraftableRecipes();
         foreach (Recipes recipe in recipes)
         {
-            if (recipe.recipeName.Contains("Potion") && !recipes.Contains(recipe))
-            {
-                recipes.Add(recipe);
-            }
+            if (recipe.recipeName.Contains("Potion") && !(craftableRecipes.Contains(recipe)))
+                craftableRecipes.Add(recipe);
         }
     }
     void CheckAge()
