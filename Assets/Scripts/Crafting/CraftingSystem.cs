@@ -26,10 +26,12 @@ public class CraftingSystem : MonoBehaviour
         foreach (Recipes recipe in unlockedRecipes)
         {
             if (HasItemsOnGround(recipe.requiredItems))
+            {
                 craftableRecipes.Add(recipe);
-            if (inRangeOfAlchemistTable)
-                CheckIfPotion();
+            }
         }
+        if (inRangeOfAlchemistTable)
+            CheckIfPotion();
     }
 
     public void CreateItem(Recipes recipe)
@@ -67,7 +69,7 @@ public class CraftingSystem : MonoBehaviour
     {
         groundItems.Clear();
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.7f);
 
         foreach (Collider2D collider in colliders)
         {
