@@ -14,6 +14,7 @@ public class CraftingSystem : MonoBehaviour
     Player player;
 
     private bool inRangeOfAlchemistTable = false;
+    private bool inRangeOfFire = false;
     public void TryCraft()
     {
         CraftingManager.Instance.CreateButtons(craftableRecipes);
@@ -32,6 +33,8 @@ public class CraftingSystem : MonoBehaviour
         }
         if (inRangeOfAlchemistTable)
             CheckIfPotion();
+        if (inRangeOfFire)
+            CheckIfMeat();
     }
 
     public void CreateItem(Recipes recipe)
@@ -97,11 +100,15 @@ public class CraftingSystem : MonoBehaviour
     {
         if (collision.gameObject.name == "AlchemistTable")
             inRangeOfAlchemistTable = true;
+        if (collision.gameObject.name == "Campfire")
+            inRangeOfFire = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "AlchemistTable")
             inRangeOfAlchemistTable = false;
+        if (collision.gameObject.name == "Campfire")
+            inRangeOfFire = false;
     }
 
     void CheckIfPotion()
@@ -109,6 +116,14 @@ public class CraftingSystem : MonoBehaviour
         foreach (Recipes recipe in recipes)
         {
             if (recipe.recipeName.Contains("Potion") && !(craftableRecipes.Contains(recipe)))
+                craftableRecipes.Add(recipe);
+        }
+    }
+    void CheckIfMeat()
+    {
+        foreach (Recipes recipe in recipes)
+        {
+            if (recipe.recipeName.Contains("Cooked") && !(craftableRecipes.Contains(recipe)))
                 craftableRecipes.Add(recipe);
         }
     }

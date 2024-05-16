@@ -20,12 +20,32 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float age = 20f;
     public float currentAge { get { return age; } private set { age = age; } }
+
+    [SerializeField]
+    private float maxHunger = 100f;
+    [SerializeField]
+    private float hunger;
+    public float currentHunger { get { return hunger; } private set { hunger = hunger; } }
     [SerializeField]
     private float ageCooldown = 720f; // 4 minuty na den, 3 dny na rok, cca 50 let
-    private float currentCooldown;
+    private float currentAgeCooldown;
+    [SerializeField]
+    private float hungerCooldown = 60f; // 1 minuta na 1% hladu
+    private float currentHungerCooldown;
+
+    [SerializeField]
+    private float hungerDMGCooldown = 30f; // pul minuta na dmg z hladu
+    private float currentHungerDMGCooldown;
+
+    [SerializeField]
+    private float HealFromFullHungerCooldown = 30f; // pul minuta na heal z plnyho briska
+    private float currentHealFromFullHungerCooldown;
 
     [SerializeField]
     private Image hpBar;
+
+    [SerializeField]
+    private Image hungerBar;
 
     [SerializeField]
     private GameObject deathScreen;
@@ -37,15 +57,54 @@ public class Player : MonoBehaviour
     {
         AddAge();
         CheckAge();
+        DecreaseHungerCooldown();
+        CheckHunger();
+        IncreaseHealFromFullHunger();
+        LoadStats();
     }
 
     void AddAge()
     {
-        currentCooldown += Time.deltaTime;
-        if (currentCooldown >= ageCooldown)
+        currentAgeCooldown += Time.deltaTime;
+        if (currentAgeCooldown >= ageCooldown)
         {
             age++;
-            currentCooldown = 0;
+            currentAgeCooldown = 0;
+        }
+    }
+    void DecreaseHungerCooldown()
+    {
+        currentHungerCooldown += Time.deltaTime;
+        if (currentHungerCooldown >= hungerCooldown)
+        {
+            hunger--;
+            currentHungerCooldown = 0;
+        }
+    }
+    void DecreaseHungerDMGCooldown()
+    {
+        currentHungerDMGCooldown += Time.deltaTime;
+        if (currentHungerDMGCooldown >= hungerDMGCooldown)
+        {
+            currentHungerDMGCooldown = 0;
+            DecreaseHP(20);
+        }
+    }
+    void IncreaseHealFromFullHunger()
+    {
+        currentHealFromFullHungerCooldown += Time.deltaTime;
+        if (currentHealFromFullHungerCooldown >= HealFromFullHungerCooldown && currentHunger >= hunger && hp < maxHp)
+        {
+            currentHealFromFullHungerCooldown = 0;
+            if (hp > 90 && hp < maxHp)
+            {
+                hp = maxHp;
+            }
+            else
+            {
+                hp += 10;
+            }
+            hpBar.fillAmount = hp / maxHp;
         }
     }
     void CheckAge() 
@@ -57,6 +116,23 @@ public class Player : MonoBehaviour
             deathScreen.SetActive(true);
             //game over
         } 
+    }
+    void CheckHunger()
+    {
+        if (hunger <= 0)
+        {
+            DecreaseHungerDMGCooldown();
+        }
+        else
+        {
+            currentHungerDMGCooldown = 0;
+        }
+    }
+
+    void LoadStats()
+    {
+        hpBar.fillAmount = hp / maxHp;
+        hungerBar.fillAmount = hunger / maxHunger;
     }
 
     public void RestartAndQuitToMenu()
@@ -75,6 +151,10 @@ public class Player : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+    public void DecreaseHunger()
+    {
+        hungerBar.fillAmount = hunger / maxHunger;
+    }
 
     public float DealDamage()
     {
@@ -87,6 +167,11 @@ public class Player : MonoBehaviour
     {
         hp = PlayerPrefs.GetFloat("HP");
         hpBar.fillAmount = hp / maxHp;
+    }
+    public void setHunger()
+    {
+        hunger = PlayerPrefs.GetFloat("Hunger");
+        hungerBar.fillAmount = hunger / maxHunger;
     }
     public void setAge()
     {

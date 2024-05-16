@@ -65,6 +65,7 @@ public class SaveAndLoad : MonoBehaviour
     public void SavePlayer()
     {
         PlayerPrefs.SetFloat("HP", player.currentHP);
+        PlayerPrefs.SetFloat("Hunger", player.currentHunger);
         PlayerPrefs.SetFloat("Age", player.currentAge);
 
         PlayerPrefs.SetFloat("X", player.gameObject.transform.position.x);
