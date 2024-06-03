@@ -29,11 +29,11 @@ public class TerrorBirdController : EnemyController
 
     public void GoAfterPlayer()
     {
-        if (Vector2.Distance(transform.position, GameManager.instance.player.transform.position) < 7f)
+        if (Vector2.Distance(parentHolder.transform.position, GameManager.instance.player.transform.position) < 7f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
+            parentHolder.transform.position = Vector2.MoveTowards(parentHolder.transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
             IdleAnimator.SetBool("Walk", true);
-            if (gameObject.transform.position.x > GameManager.instance.player.transform.position.x)
+            if (parentHolder.transform.position.x > GameManager.instance.player.transform.position.x)
             {
                 transform.localScale = new Vector3(-5, transform.localScale.y, transform.localScale.z);
             }

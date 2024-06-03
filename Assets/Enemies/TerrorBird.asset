@@ -18,5 +18,5 @@ MonoBehaviour:
   speed: 1.7
   enemyName: Terror Bird
   icon: {fileID: 21300000, guid: 52ca92b0dfd435a478bc478dc8c5a69e, type: 3}
-  prefab: {fileID: 8858921243534945969, guid: 10932d73e8414174a90f1ce8bd0d4398, type: 3}
+  prefab: {fileID: 7362092056878338464, guid: 0270a5109ed640c42b30e97ad956ff7f, type: 3}
   drop: {fileID: 1911912486642252111, guid: f2cfb6d38f397434ba574a1f4e9d9223, type: 3}

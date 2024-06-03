@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3731799888286094694}
   - component: {fileID: 4747667863357710249}
   - component: {fileID: 1833377382230546670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
