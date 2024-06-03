@@ -28,13 +28,14 @@ public class CraftingSystem : MonoBehaviour
         {
             if (HasItemsOnGround(recipe.requiredItems))
             {
-                craftableRecipes.Add(recipe);
+                if (recipe.RequiresAlchemistTable && inRangeOfAlchemistTable)
+                    craftableRecipes.Add(recipe);
+                else if (recipe.RequiresCampfire && inRangeOfFire)
+                    craftableRecipes.Add(recipe);
+                else if (!recipe.RequiresAlchemistTable && !recipe.RequiresCampfire)
+                    craftableRecipes.Add(recipe);
             }
         }
-        if (inRangeOfAlchemistTable)
-            CheckIfPotion();
-        if (inRangeOfFire)
-            CheckIfMeat();
     }
 
     public void CreateItem(Recipes recipe)
@@ -47,7 +48,7 @@ public class CraftingSystem : MonoBehaviour
     {
         foreach (string itemName in itemNames)
         {
-            ItemPickup itemToRemove = groundItems.Find(item => item.Item.itemName == itemName);
+            ItemPickup itemToRemove = groundItems.FirstOrDefault(item => item.Item.itemName == itemName);
             if (itemToRemove != null)
             {
                 groundItems.Remove(itemToRemove);
@@ -109,23 +110,6 @@ public class CraftingSystem : MonoBehaviour
             inRangeOfAlchemistTable = false;
         if (collision.gameObject.name == "Campfire")
             inRangeOfFire = false;
-    }
-
-    void CheckIfPotion()
-    {
-        foreach (Recipes recipe in recipes)
-        {
-            if (recipe.recipeName.Contains("Potion") && !(craftableRecipes.Contains(recipe)))
-                craftableRecipes.Add(recipe);
-        }
-    }
-    void CheckIfMeat()
-    {
-        foreach (Recipes recipe in recipes)
-        {
-            if (recipe.recipeName.Contains("Cooked") && !(craftableRecipes.Contains(recipe)))
-                craftableRecipes.Add(recipe);
-        }
     }
     void CheckAge()
     {

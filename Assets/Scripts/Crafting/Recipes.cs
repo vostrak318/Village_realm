@@ -8,4 +8,6 @@ public class Recipes : ScriptableObject
     public List<string> requiredItems;
     public GameObject craftedItemPrefab;
     public Sprite ItemIcon;
+    public bool RequiresAlchemistTable = false;
+    public bool RequiresCampfire = false;
 }

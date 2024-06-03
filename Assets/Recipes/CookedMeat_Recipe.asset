@@ -19,3 +19,5 @@ MonoBehaviour:
   - Raw Steak
   craftedItemPrefab: {fileID: 4758415839512724459, guid: 5363c465ceee8b34f8fb3e3c2bef775b, type: 3}
   ItemIcon: {fileID: 21300000, guid: 45fd2177b98f01e4da8185d2f49a1a00, type: 3}
+  RequiresAlchemistTable: 0
+  RequiresCampfire: 1

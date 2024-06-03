@@ -49,6 +49,11 @@ public class ItemPickup : MonoBehaviour
             if (loadingWheel != null)
                 loadingWheel.fillAmount = 0;
         }
+        if (Input.GetMouseButton(1) && Item.itemName.Contains("Cooked"))
+        {
+            GameManager.instance.player.AddHunger();
+            Destroy(gameObject);
+        }
     }
     private void OnMouseExit()
     {

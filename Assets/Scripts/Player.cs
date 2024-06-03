@@ -161,6 +161,19 @@ public class Player : MonoBehaviour
         return dmg;
     }
 
+    public void AddHunger()
+    {
+        if (hunger < maxHunger)
+        {
+            hunger += 20;
+            if (hunger > maxHunger)
+            {
+                hunger = maxHunger;
+                hungerBar.fillAmount = hunger / maxHunger;
+            }
+            hungerBar.fillAmount = hunger / maxHunger;
+        }
+    }
 
     //loading player
     public void setHP()
