@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed = 3f;
-    [SerializeField] private float rideSpeed = 6f;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float rideSpeed;
     private float currentSpeed;
 
     [SerializeField]
@@ -64,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void ToggleRide()
     {
+        //walkSpeed = GameManager.instance.player.speed;
+        rideSpeed = walkSpeed * 1.5f;
         if (currentToggleRideCooldown <= 0)
         {
             if (!riding)
@@ -80,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
             }
             currentToggleRideCooldown = toggleRideCooldown;
         }
-        Debug.Log(riding);
     }
 
     void LowerCooldown()

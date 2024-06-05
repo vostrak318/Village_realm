@@ -10,20 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9d33db0855a6c4489c968aa56dd0383, type: 3}
-  m_Name: Alchemist_Table
+  m_Name: AntiagePotion_Recipe
   m_EditorClassIdentifier: 
-  recipeName: Alchemist Table
+  recipeName: Antiage Potion
   requiredAge: 20
   requiredItems:
-  - Wood
-  - Wood
-  - Stone
-  - Stone
-  - Dandelion
-  - Magical Flower
-  - Shrooms
   - Weed
-  craftedItemPrefab: {fileID: 7071316863936407775, guid: 639233ed3a6a2bd488c58f1dc0288cfe, type: 3}
-  ItemIcon: {fileID: 21300000, guid: 8f1b8713f35db3341a05f041b5a111ac, type: 3}
-  RequiresAlchemistTable: 0
+  - Weed
+  - Weed
+  - Magical Flower
+  - Magical Flower
+  - Magical Flower
+  - Cave Shrooms
+  - Cave Shrooms
+  - Cave Shrooms
+  - Dandelion
+  - Dandelion
+  - Dandelion
+  craftedItemPrefab: {fileID: 8053096638844111114, guid: f1ad2eeae869c894f8e939c2f0ef8607, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 458ea6a02762bf646ab3e054f77a8d8d, type: 3}
+  RequiresAlchemistTable: 1
   RequiresCampfire: 0

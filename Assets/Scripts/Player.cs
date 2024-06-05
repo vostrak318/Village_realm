@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float dmg = 10f;
     [SerializeField]
-    private float speed = 1f;
+    public float speed = 1f;
     [SerializeField]
     private float age = 20f;
     public float currentAge { get { return age; } private set { age = age; } }
@@ -50,8 +50,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject deathScreen;
 
+    [SerializeField]
+    private GameObject victoryScreen;
 
-    public float Speed { get { return speed; }}
+    [SerializeField]
+    private GameObject statUI;
+
 
     void Update()
     {
@@ -109,12 +113,12 @@ public class Player : MonoBehaviour
     }
     void CheckAge() 
     { 
-        if (age >= rnd.Next(65, 80)) //nebo pokud nemas potion
+        if (age >= rnd.Next(65, 80))
         { 
             hp = 0; 
             Time.timeScale = 0;
             deathScreen.SetActive(true);
-            //game over
+            statUI.SetActive(false);
         } 
     }
     void CheckHunger()
@@ -133,6 +137,7 @@ public class Player : MonoBehaviour
     {
         hpBar.fillAmount = hp / maxHp;
         hungerBar.fillAmount = hunger / maxHunger;
+        
     }
 
     public void RestartAndQuitToMenu()
@@ -148,6 +153,7 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             deathScreen.SetActive(true);
+            statUI.SetActive(false);
             Time.timeScale = 0;
         }
     }
@@ -161,6 +167,7 @@ public class Player : MonoBehaviour
         return dmg;
     }
 
+    //item effects
     public void AddHunger()
     {
         if (hunger < maxHunger)
@@ -173,6 +180,36 @@ public class Player : MonoBehaviour
             }
             hungerBar.fillAmount = hunger / maxHunger;
         }
+    }
+    public void AddHP()
+    {
+        if (hp < maxHp)
+        {
+            hp += 20; 
+            if (hp > maxHp)
+            {
+                hp = maxHp; 
+                hpBar.fillAmount = hp / maxHp; 
+            } 
+            hpBar.fillAmount = hp / maxHp; 
+        }
+    }
+    public void StopTheAge()
+    {
+        victoryScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void AddSpeed()
+    {
+        speed += 0.5f;
+    }
+    public void AddDmg()
+    {
+        dmg += 5;
+    }
+    public void AddMaxHP()
+    {
+        maxHp += 10;
     }
 
     //loading player

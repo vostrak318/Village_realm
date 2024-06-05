@@ -16,6 +16,10 @@ public sealed class UIManager : MonoBehaviour
     GameObject minimapPlayer;
     [SerializeField]
     GameObject deathScreen;
+    [SerializeField]
+    GameObject victoryScreen;
+    [SerializeField]
+    GameObject optionsMenu;
 
     void Start()
     {
@@ -24,6 +28,8 @@ public sealed class UIManager : MonoBehaviour
         inventory.SetActive(false);
         minimapPlayer.SetActive(false);
         deathScreen.SetActive(false);
+        victoryScreen.SetActive(false);
+        optionsMenu.SetActive(false);
     }
     private void Awake()
     {
@@ -65,6 +71,8 @@ public sealed class UIManager : MonoBehaviour
         SaveAndLoad.Instance.SaveItemsOnGround();
         SaveAndLoad.Instance.SaveTreesAndStones();
         SceneManager.LoadScene("MenuScene");
+        deathScreen.SetActive(false);
+        victoryScreen.SetActive(false);
     }
     public void Resume()
     {
@@ -79,5 +87,15 @@ public sealed class UIManager : MonoBehaviour
     {
         inventory.SetActive(true);
         InventoryManager.Instance.ListItems();
+    }
+    public void Options()
+    {
+        menu.SetActive(false);
+        optionsMenu.SetActive(true);
+    }
+    public void BackToStopMenu()
+    {
+        menu.SetActive(true);
+        optionsMenu.SetActive(false);
     }
 }

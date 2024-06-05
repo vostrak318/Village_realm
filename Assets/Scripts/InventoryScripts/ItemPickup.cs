@@ -49,10 +49,38 @@ public class ItemPickup : MonoBehaviour
             if (loadingWheel != null)
                 loadingWheel.fillAmount = 0;
         }
-        if (Input.GetMouseButton(1) && Item.itemName.Contains("Cooked"))
+        if (Input.GetMouseButton(1))
         {
-            GameManager.instance.player.AddHunger();
-            Destroy(gameObject);
+            if (Item.itemName.Contains("Cooked"))
+            {
+                GameManager.instance.player.AddHunger();
+                Destroy(gameObject);
+            }
+            else if (Item.itemName.Contains("Health"))
+            {
+                GameManager.instance.player.AddHP();
+                Destroy(gameObject);
+            }
+            else if (Item.itemName.Contains("age"))
+            {
+                GameManager.instance.player.StopTheAge();
+                Destroy(gameObject);
+            }
+            else if (Item.itemName.Contains("Speed"))
+            {
+                GameManager.instance.player.AddSpeed();
+                Destroy(gameObject);
+            }
+            else if (Item.itemName.Contains("Sword"))
+            {
+                GameManager.instance.player.AddDmg();
+                Destroy(gameObject);
+            }
+            else if (Item.itemName.Contains("Armor"))
+            {
+                GameManager.instance.player.AddMaxHP();
+                Destroy(gameObject);
+            }
         }
     }
     private void OnMouseExit()

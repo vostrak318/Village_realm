@@ -10,20 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9d33db0855a6c4489c968aa56dd0383, type: 3}
-  m_Name: Alchemist_Table
+  m_Name: SpeedPotion_Recipe
   m_EditorClassIdentifier: 
-  recipeName: Alchemist Table
+  recipeName: Speed Potion
   requiredAge: 20
   requiredItems:
-  - Wood
-  - Wood
-  - Stone
-  - Stone
-  - Dandelion
   - Magical Flower
-  - Shrooms
+  - Cave Shrooms
+  - Cave Shrooms
   - Weed
-  craftedItemPrefab: {fileID: 7071316863936407775, guid: 639233ed3a6a2bd488c58f1dc0288cfe, type: 3}
-  ItemIcon: {fileID: 21300000, guid: 8f1b8713f35db3341a05f041b5a111ac, type: 3}
-  RequiresAlchemistTable: 0
+  craftedItemPrefab: {fileID: 4247658722902709612, guid: 10d733b2dff407e40badc00c68bd3c39, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 78d2f0b607e027f4896c3da944cc57a8, type: 3}
+  RequiresAlchemistTable: 1
   RequiresCampfire: 0
