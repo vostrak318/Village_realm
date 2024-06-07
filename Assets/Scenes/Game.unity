@@ -71932,6 +71932,7 @@ MonoBehaviour:
   deathScreen: {fileID: 1048340848}
   victoryScreen: {fileID: 191306244}
   optionsMenu: {fileID: 936280828}
+  statUI: {fileID: 297383225}
 --- !u!4 &1784432045
 Transform:
   m_ObjectHideFlags: 0

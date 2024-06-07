@@ -20,6 +20,8 @@ public sealed class UIManager : MonoBehaviour
     GameObject victoryScreen;
     [SerializeField]
     GameObject optionsMenu;
+    [SerializeField]
+    GameObject statUI;
 
     void Start()
     {
@@ -30,6 +32,7 @@ public sealed class UIManager : MonoBehaviour
         deathScreen.SetActive(false);
         victoryScreen.SetActive(false);
         optionsMenu.SetActive(false);
+        statUI.SetActive(true);
     }
     private void Awake()
     {
@@ -43,12 +46,14 @@ public sealed class UIManager : MonoBehaviour
         {
             menu.SetActive(true);
             minimapPlayer.SetActive(true);
+            statUI.SetActive(false);
             Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && menu.activeInHierarchy == true)
         {
             menu.SetActive(false);
             minimapPlayer.SetActive(false);
+            statUI.SetActive(true);
             Time.timeScale = 1;
         }
         else if (Input.GetKeyDown(KeyCode.E) && inventory.activeInHierarchy == false && menu.activeInHierarchy == false)
@@ -92,6 +97,7 @@ public sealed class UIManager : MonoBehaviour
     {
         menu.SetActive(false);
         optionsMenu.SetActive(true);
+        statUI.SetActive(false);
     }
     public void BackToStopMenu()
     {
