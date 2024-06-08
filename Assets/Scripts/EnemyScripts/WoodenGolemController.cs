@@ -9,10 +9,10 @@ public class WoodenGolemController : EnemyController
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            IdleAnimator.SetBool("Attacking", true);
             Player player = collision.gameObject.GetComponent<Player>();
             if (IdleAnimator != null && player != null && currentCooldown <= 0f)
             {
-                IdleAnimator.SetBool("Attacking", true);
                 Attack();
             }
             else

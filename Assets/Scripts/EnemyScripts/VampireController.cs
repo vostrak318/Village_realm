@@ -10,9 +10,9 @@ public class VampireController : EnemyController
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();
+            AttackAnimator.SetBool("Attacking", true);
             if (IdleAnimator != null && AttackAnimator != null && player != null && currentCooldown <= 0f)
             {
-                AttackAnimator.SetBool("Attacking", true);
                 Attack();
             }
             else
