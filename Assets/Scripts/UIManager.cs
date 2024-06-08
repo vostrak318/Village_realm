@@ -42,7 +42,7 @@ public sealed class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && menu.activeInHierarchy == false && inventory.activeInHierarchy == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && menu.activeInHierarchy == false && inventory.activeInHierarchy == false && optionsMenu.activeInHierarchy == false)
         {
             menu.SetActive(true);
             minimapPlayer.SetActive(true);
@@ -54,6 +54,12 @@ public sealed class UIManager : MonoBehaviour
             menu.SetActive(false);
             minimapPlayer.SetActive(false);
             statUI.SetActive(true);
+            Time.timeScale = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && optionsMenu.activeInHierarchy == true)
+        {
+            optionsMenu.SetActive(false);
+            menu.SetActive(true);
             Time.timeScale = 1;
         }
         else if (Input.GetKeyDown(KeyCode.E) && inventory.activeInHierarchy == false && menu.activeInHierarchy == false)
