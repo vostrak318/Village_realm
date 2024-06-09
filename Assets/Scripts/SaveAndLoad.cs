@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class SaveAndLoad : MonoBehaviour
 {
-
     private static SaveAndLoad instance;
-    public static SaveAndLoad Instance { get { return instance; }}
+    public static SaveAndLoad Instance { get { return instance; } }
 
     [field: SerializeField] private Transform EnvironmentParent;
 
@@ -18,7 +16,6 @@ public class SaveAndLoad : MonoBehaviour
     }
 
     public List<TreePrefabEntry> TreePrefabs;
-
 
     [System.Serializable]
     public class StonePrefabEntry
@@ -38,17 +35,34 @@ public class SaveAndLoad : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-        } 
+        }
+
+        // Check if this is the first run after installation
+        if (PlayerPrefs.GetInt("FirstRunAfterInstall", 1) == 1)
+        {
+            // Delete all PlayerPrefs data
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+            Debug.Log("PlayerPrefs were cleared in Awake on first run after install!");
+
+            // Set the flag to indicate that the first run after install is complete
+            PlayerPrefs.SetInt("FirstRunAfterInstall", 0);
+            PlayerPrefs.Save();
+        }
     }
+
     private void Start()
     {
         player = GameManager.instance.player;
 
+        Debug.Log("HP in PlayerPrefs: " + PlayerPrefs.GetFloat("HP"));
+        Debug.Log("TreesCount in PlayerPrefs: " + PlayerPrefs.GetInt("TreesCount"));
+        Debug.Log("ItemsOnGroundCount in PlayerPrefs: " + PlayerPrefs.GetInt("ItemsOnGroundCount"));
+
         if (PlayerPrefs.GetFloat("HP") > 0)
             LoadPlayer();
 
-
-        if(PlayerPrefs.GetInt("TreesCount") > 0)
+        if (PlayerPrefs.GetInt("TreesCount") > 0)
         {
             DestroyAllTreesAndStones();
             LoadTreesAndStones();
@@ -60,6 +74,7 @@ public class SaveAndLoad : MonoBehaviour
             LoadItemsOnGround();
         }
     }
+
     private SaveAndLoad() { }
 
     public void SavePlayer()
@@ -99,7 +114,6 @@ public class SaveAndLoad : MonoBehaviour
 
             PlayerPrefs.SetInt("TreePrefabId" + i, prefabId);
         }
-
 
         GameObject[] stones = GameObject.FindGameObjectsWithTag("stone");
 
@@ -144,7 +158,6 @@ public class SaveAndLoad : MonoBehaviour
             }
         }
 
-
         int stonesCount = PlayerPrefs.GetInt("StonesCount");
         for (int i = 0; i < stonesCount; i++)
         {
@@ -163,9 +176,10 @@ public class SaveAndLoad : MonoBehaviour
                 bool isDestroyed = PlayerPrefs.GetInt("StoneDestroyed" + i) == 1;
                 if (isDestroyed)
                     Destroy(stone);
-            }   
+            }
         }
     }
+
     public void DestroyAllTreesAndStones()
     {
         GameObject[] trees = GameObject.FindGameObjectsWithTag("tree");
@@ -195,7 +209,7 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetFloat("ItemY" + i, _pickUpableItem.transform.position.y);
             PlayerPrefs.SetInt("ItemID" + i, _pickUpableItem.Item.id);
             i++;
-        }   
+        }
         Debug.Log("Items saved");
         PlayerPrefs.Save();
     }

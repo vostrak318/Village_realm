@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\PlayTheGame.cs" />
     <Compile Include="Assets\Scripts\Crafting\CraftingManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\Scripts\DeletePlayerPrefs.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Crafting\CraftingSystem.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\TerrorBirdController.cs" />
